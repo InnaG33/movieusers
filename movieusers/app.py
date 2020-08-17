@@ -20,9 +20,12 @@ from sklearn.metrics import mean_squared_error
 app = flask.Flask(__name__, template_folder='templates')
 
 # Read the movies-ratings data
-# https://git.heroku.com/movieusers.git
-movies = pd.read_csv("movies_urls.csv", low_memory=False, encoding = 'latin-1')
-ratings = pd.read_csv("ratings_short_vi.csv", low_memory=False, encoding = 'latin-1')
+
+movies_path = os.path.join("/Users/grinn/Desktop/movieusers/movieusers/static/movies_urls.csv")
+ratings_path = os.path.join("/Users/grinn/Desktop/movieusers/movieusers/static/ratings_short_vi.csv")
+
+movies = pd.read_csv(movies_path, low_memory=False, encoding = 'latin-1')
+ratings = pd.read_csv(ratings_path, low_memory=False, encoding = 'latin-1')
 
 def get_rating_(userid, movieid):
     return (ratings.loc[(ratings.userId==userid) & (ratings.movieId == movieid),'rating'].iloc[0])
