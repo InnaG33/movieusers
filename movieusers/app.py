@@ -6,6 +6,7 @@ import json
 import os
 import csv
 import pandas as pd
+import sys
 
 import numpy as np
 import math
@@ -19,10 +20,12 @@ from sklearn.metrics import mean_squared_error
 
 app = flask.Flask(__name__, template_folder='templates')
 
+# current_work_directory = os.getcwd()
+# abs_work_directory = os.path.abspath(current_work_directory) 
 # Read the movies-ratings data
 
-movies_path = os.path.join("/Users/grinn/Desktop/movieusers/movieusers/static/movies_urls.csv")
-ratings_path = os.path.join("/Users/grinn/Desktop/movieusers/movieusers/static/ratings_short_vi.csv")
+movies_path = os.path.join("https://movieusers-ds.s3.us-east-2.amazonaws.com/movies_urls.csv")
+ratings_path = os.path.join("https://movieusers-ds.s3.us-east-2.amazonaws.com/ratings_short_vi.csv")
 
 movies = pd.read_csv(movies_path, low_memory=False, encoding = 'latin-1')
 ratings = pd.read_csv(ratings_path, low_memory=False, encoding = 'latin-1')
